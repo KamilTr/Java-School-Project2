@@ -27,6 +27,7 @@ public class SimpleDataStructure {
 		counter++;
 		return true;
 	}
+	
 
 	/** returns the name at the specified index */
 	public String get(int index) {
@@ -63,7 +64,24 @@ public class SimpleDataStructure {
 	}
 	
 	public void addSort(String namn){
-		add(namn);
+		int counter = 0;
+		for(String s : friends){
+			if(s!= null){
+				if(namn.compareTo(s) > 0)
+					counter++;
+			}
+			
+		}
+		String[] temp = new String[friends.length];
+		
+		for(int i = 0;i<counter;i++){temp[i]=friends[i];}
+		for(int i = counter; i < friends.length -1; i++){temp[i+1] = friends[i];}
+		temp[counter] = namn;
+		friends = temp;
+	}
+	
+	
+	public void sorter(){										//Lagt till en egen metod för att sortera en lista
 		ArrayList<String> temp = new ArrayList<String>();
 		for(int i = 0; i < friends.length; i++){
 			if(friends[i]!=null){
@@ -77,14 +95,16 @@ public class SimpleDataStructure {
 
 	public static void main(String[] arg) {
 		SimpleDataStructure myfriends = new SimpleDataStructure();
-		myfriends.add("Kalle");
-		myfriends.add("Jonas");
-		myfriends.add("Sten");
-		myfriends.add("Calle");
+		myfriends.add("Arne");
+		myfriends.add("Bertil");
+		myfriends.add("Johanna");
+		myfriends.add("Niklas");
+		myfriends.add("Thao");
 		myfriends.add("Torkel");
-		myfriends.addSort("Arne");
-		myfriends.remove("Kalle");
+		myfriends.addSort("Kamil");
+		myfriends.remove("Arne");
 		myfriends.printFriends();
+	
 		System.out.println(myfriends.get(3));
 	}
 }
