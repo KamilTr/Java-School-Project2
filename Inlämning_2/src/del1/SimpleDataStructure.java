@@ -99,12 +99,13 @@ public class SimpleDataStructure {
 		myfriends.add("Bertil");
 		myfriends.add("Johanna");
 		myfriends.add("Niklas");
-		myfriends.add("Thao");
 		myfriends.add("Torkel");
 		myfriends.addSort("Kamil");
-		myfriends.remove("Arne");
 		myfriends.printFriends();
 	
 		System.out.println(myfriends.get(3));
+		
+		
 	}
+		
 }
