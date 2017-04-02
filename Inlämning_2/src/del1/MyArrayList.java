@@ -7,11 +7,11 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 	private AnyType[] list;
 	private int count;
 
-	public void main(String[] args){
+	public static void main(String[] args){
 		
 		MyArrayList<String> test = new MyArrayList<String>();
 		test.add("haha");
-		System.out.println(test);
+		System.out.println(test.toString());
 		
 	}
 	
@@ -31,7 +31,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 		for(int i  = 0; i < list.length; i++){
 			temp[i] = list[i];
 		}
-		temp[temp.length] = o;
+		temp[temp.length -1 ] = o;
 		list = temp;
 		return true;
 	}
