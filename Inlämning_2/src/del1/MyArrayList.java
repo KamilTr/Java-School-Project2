@@ -11,7 +11,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 		
 		MyArrayList<String> test = new MyArrayList<String>();
 		test.add("haha");
-		System.out.println(test.toString());
+		System.out.println(test(1));
 		
 	}
 	
@@ -52,7 +52,9 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 
 	/** returns the component at the specified index */
 	public AnyType get(int index) {
-		
+		if(index <= list.length){
+			return list[index];
+		}
 		return null;
 	}
 
@@ -61,12 +63,32 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 	 * equality using equals method
 	 */
 	public int indexOf(AnyType o) {
+		int counter = 0;
+		for(int i = 0; i<list.length; i++){
+			if(list[i] == o){
+				counter++;
+				return counter;
+			}
+			else counter++;
+		
+		}
 		return -1;
 	}
 
 	/** tests if this list has no components */
 	public boolean isEmpty() {
-		return true;
+		boolean anwser = false;
+		int counter = 0;
+		for(AnyType s : list){
+			if(s == null)
+				counter++;
+		}
+		if(counter == list.length -1)
+			anwser = true;
+		if((list==null) || (list.length==0)){
+			anwser = true;
+		}
+		return anwser;
 	}
 
 	/**

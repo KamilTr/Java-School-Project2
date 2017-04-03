@@ -45,7 +45,7 @@ public class CollectionOps {
 		
 	}
 	
-	public static <T> List<T> reverse(List<T> l){
+	public static <T> Collection<T> reverse(List<T> l){
 		
 		T temp;
 		T temp2;
