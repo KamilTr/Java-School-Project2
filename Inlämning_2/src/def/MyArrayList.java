@@ -1,4 +1,4 @@
-package del1;
+package def;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -11,15 +11,14 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 	public static void main(String[] args){
 		
 		MyArrayList<String> test = new MyArrayList<String>();
+		test.add("test");
+		test.add("haff");
+		test.add("aset");
+		test.add("hej");
+		test.add("sjuk");
+		test.add("itta");
 		test.add("KAmil");
-		test.add("TJa");
-		test.add("HEj");
-		test.add("Sleep");
-		test.add("Dator");
-		test.remove("HEj");
-		test.add("toa");
-		test.add("johanna");
-		test.add("usb");
+		test.remove("KAmil");
 		System.out.println(test.isEmpty());
 		System.out.println(Arrays.toString(test.toArray()));
 		System.out.println(test.size());
@@ -43,24 +42,29 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 	/* Appends the specified element to the end of this list. */
 
 	public boolean add(AnyType o) {
-		AnyType[] temp = (AnyType[]) new Object[list.length +1];
-		for(int i  = 0; i < list.length; i++){
-			temp[i] = list[i];
+		if(o != null){	
+			AnyType[] temp = (AnyType[]) new Object[list.length +1];
+			for(int i  = 0; i < list.length; i++){
+				temp[i] = list[i];
+			}
+			temp[count] = o;
+			list = temp;
+			count++;
+			return true;
 		}
-		temp[count] = o;
-		list = temp;
-		count++;
-		return true;
+		return false;
 	}
 
 	/** tests if the specified element is a component of this list */
 	public boolean contains(AnyType o) {
 		boolean anwser = false;
-		for(int i = 0; i < list.length; i++){
-			if( o == list[i]){
-				anwser = true;
-				break;
-			}				
+		if(o != null){
+			for(int i = 0; i < list.length; i++){
+				if( o == list[i]){
+					anwser = true;
+					break;
+				}				
+			}
 		}
 		
 		return anwser;
@@ -69,9 +73,9 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 
 	/** returns the component at the specified index */
 	public AnyType get(int index) {
-		if(index <= list.length){
-			return list[index];
-		}
+			if(index <= list.length){
+				return list[index];
+			}
 		return null;
 	}
 
@@ -80,13 +84,12 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 	 * equality using equals method
 	 */
 	public int indexOf(AnyType o) {
-		int counter = 0;
 		for(int i = 0; i<list.length; i++){
 			if(list[i] == o){
-				counter++;
-				return counter;
+				
+				return i;
 			}
-			else counter++;
+			
 		
 		}
 		return -1;
@@ -94,18 +97,8 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 
 	/** tests if this list has no components */
 	public boolean isEmpty() {
-		boolean anwser = false;
-		int counter = 0;
-		for(AnyType s : list){
-			if(s == null)
-				counter++;
-		}
-		if(counter == list.length)
-			anwser = true;
-		if((list==null) || (list.length==0)){
-			anwser = true;
-		}
-		return anwser;
+		if(count == 0)return true;
+		return false;
 	}
 
 	/**
@@ -113,20 +106,22 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 	 * list contains the
 	 */
 	public boolean remove(AnyType o) {
+		boolean anwser = false;
+		int counter = 0;
 		for(int i = 0; i < list.length; i++){
-			AnyType[] temp = (AnyType[]) new Object[list.length +1];
 			if(list[i] == o){
-				for(int j = i; j < list.length; j++){
-					if(j < list.length-1)list[j] = list[j+1];
-				}
-				list[list.length - 1] = null;
 				break;
 			}
-			
+			counter++;
+			System.out.println(counter);
 		}
-		
+		for(int i = counter; i < list.length; i++){
+			if(i < count){
+				list[i] = list[i+1];
+			}
+		}
 		count--;
-		return true;
+		return anwser;
 	}
 
 	/** returns the number of components in this list */
@@ -139,14 +134,10 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 	 * order
 	 */
 	public Object[] toArray() {
-		int counter = 0;
-		for(int i = 0; i<list.length; i++){
-			if(list[i] != null) counter++;
-		}
-		Object[] temp = new Object[counter];
-		for(int i = 0; i < list.length; i++){
-			if(list[i] != null){
-				temp[i] = list[i]; 
+		Object[] temp = new Object[count];
+		if(count == 0)temp = null;
+			else{for(int i = 0; i<count; i++){
+					temp[i] = list[i];
 			}
 		}
 		
