@@ -1,4 +1,4 @@
-package def;
+package del1_del2_del3;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -16,7 +16,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 		test.add("aset");
 		test.add("hej");
 		test.add("sjuk");
-		test.add("itta");
+		test.add("ta");
 		test.add("KAmil");
 		test.remove("KAmil");
 		System.out.println(test.isEmpty());

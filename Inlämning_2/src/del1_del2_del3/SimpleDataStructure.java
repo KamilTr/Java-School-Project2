@@ -1,4 +1,4 @@
-package def;
+package del1_del2_del3;
 import java.util.*;
 
 public class SimpleDataStructure {

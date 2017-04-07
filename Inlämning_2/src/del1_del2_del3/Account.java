@@ -1,4 +1,4 @@
-package def;
+package del1_del2_del3;
 
 //*******************************************************
 //Account.java
@@ -7,8 +7,13 @@ package def;
 //change the name on, charge a fee to, and print a summary of the account.
 //*******************************************************
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-public class Account {
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
+public class Account implements Comparable<Account>{
 	private double balance;
 	private String acctNum;
 
@@ -76,14 +81,29 @@ public class Account {
 		return true;
 	}
 
+	
+	public ArrayList<Account> sort(ArrayList<Account> list) {
+		ArrayList<Account> temp = list;
+		int added = 0;
+		for(int i = 0; i < list.size(); i++){
+			//if(Comparator.(list.get(i)));
+		}
+		
+		
+		return list;
+	}
+
+	
+	
 	public static void main(String[] arg) {
-		// Exempel om hur du kan använder ArrayList ocg Account-objekt
 		ArrayList<Account> lista = new ArrayList<Account>();
-		// Skapa ett konto och sedan lägga den i listan
 		Account a = new Account("1111111111", 1000);
-		lista.add(a);
 		// skapa account och lägg den i listan samtidigt
-		lista.add(new Account("1111111112", 2000));
+		lista.add(new Account("99", 2000));
+		lista.add(new Account ("12", 1337));
+		lista.add(new Account ("11", 7777));
+		
+		
 		// för att anropa metod skall först objektet returneras från listan
 		// det görs med metoden get();
 		// här nedan direkt anrop
@@ -91,7 +111,14 @@ public class Account {
 
 		// här nedan först anrop av get() sedan,
 		Account konto = lista.get(1);
-		System.out.println(konto.deposit(300));
+		Collections.sort(lista);
+		//System.out.println(konto.deposit(300));
+		System.out.println(lista);
+	}
 
+	@Override
+	public int compareTo(Account o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
