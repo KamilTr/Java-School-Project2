@@ -11,14 +11,16 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 	public static void main(String[] args){
 		
 		MyArrayList<String> test = new MyArrayList<String>();
-		test.add("test");
-		test.add("haff");
-		test.add("aset");
-		test.add("hej");
-		test.add("sjuk");
-		test.add("ta");
-		test.add("KAmil");
-		test.remove("KAmil");
+		test.add("Stol");
+		test.add("Dator");
+		test.add("Bok");
+		test.add("Laddare");
+		test.add("Nål");
+		test.add("Hus");
+		test.add("Bibliotek");
+		test.add("Filmjölk");
+		test.add("Bil");
+		test.remove("Nål");
 		System.out.println(test.isEmpty());
 		System.out.println(Arrays.toString(test.toArray()));
 		System.out.println(test.size());
