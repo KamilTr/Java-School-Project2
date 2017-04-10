@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class LandSorter {
@@ -25,17 +24,11 @@ public class LandSorter {
 			list.add(new Land(name, capName, amount, area));	
 		}
 		scFile.close();
-		Iterator<Land> iter = list.iterator();
 		Scanner sc = new Scanner(System.in);
 		int choise = -1;
 			
-		while(choise != 3){
-			printmenu();
-			choise = sc.nextInt();
-			if(choise > 3){
-				System.out.println("Enter a valid option...");
-			}
-		}
+		printmenu();
+		choise = sc.nextInt();
 		sc.close();
 			
 		switch (choise){
@@ -45,10 +38,10 @@ public class LandSorter {
 			System.setOut(PSF);
 			Collections.sort(list, new Land.nameCompare());
 			System.out.println("Country\t\t\t\tCitizens\t\t\tArea\t\t\tCapital\n");
-			printmenu();
 			
-			while(iter.hasNext())
-				iter.next().toString();
+			for(Land s: list){
+				System.out.println(s.toString());
+			}
 			break;
 		case 1:
 			file = new File("CitizenSorted.txt");
@@ -56,10 +49,10 @@ public class LandSorter {
 			System.setOut(PSF);
 			Collections.sort(list, new Land.citizensCompare());
 			System.out.println("Country\t\t\t\tCitizens\t\t\tArea\t\t\tCapital\n");
-			printmenu();
 			
-			while(iter.hasNext())
-				iter.next().toString();
+			for(Land s: list){
+				System.out.println(s.toString());
+			}
 			break;
 		case 2:
 			file = new File("AreaSorted.txt");
@@ -67,10 +60,10 @@ public class LandSorter {
 			System.setOut(PSF);
 			Collections.sort(list, new Land.areaCompare());
 			System.out.println("Country\t\t\t\tCitizens\t\t\tArea\t\t\tCapital\n");
-			printmenu();
 			
-			while(iter.hasNext())
-				iter.next().toString();
+			for(Land s: list){
+				System.out.println(s.toString());
+			}
 			break;
 		case 3:
 			System.exit(1);
