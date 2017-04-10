@@ -32,7 +32,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 	}
 	
 	public MyArrayList() {
-		list = (AnyType[]) new Object[10]; //0 ist för 10
+		list = (AnyType[]) new Object[10];
 		count = 0;
 	}
 
