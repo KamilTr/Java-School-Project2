@@ -1,4 +1,4 @@
-package del1_del2_del3;
+package del1_del2;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
